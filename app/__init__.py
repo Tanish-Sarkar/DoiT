@@ -7,14 +7,14 @@ db = SQLAlchemy()
 def create_app():
     app = Flask(__name__)
 
-    app.config['SECREAT_KEY'] = "your-secreat-key"
-    app.config['SQLALCHEMY_DATABASE_URI'] = "sqllite:///doit.db"
-    app.config['SQLALCHEMY_TRACK_MODIFICATION'] = False
+    app.config['SECRET_KEY'] = "your-secret-key"
+    app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///doit.db"
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-    db.init(app)
+    db.init_app(app)
 
     from app.routes.auth import auth_bp
-    from app.routes.auth import tasks_bp
+    from app.routes.tasks import tasks_bp
     app.register_blueprint(auth_bp)
     app.register_blueprint(tasks_bp)
 

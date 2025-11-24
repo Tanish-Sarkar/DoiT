@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, request, redirect, url_for, sessio
 from app import db
 from app.models import Task
 
-tasks_bp = Blueprint('tasks', "__name__")
+tasks_bp = Blueprint('tasks', __name__)
 
 @tasks_bp.route('/')
 def view_tasks():
@@ -22,28 +22,38 @@ def add_task():
         new_task = Task(title=title, status='Pending')
         db.session.add(new_task)
         db.session.commit()
-        flash("Task added successfully", "sucess")
+        flash("Task added successfully", "success")
 
     return redirect(url_for('tasks.view_tasks'))
 
 @tasks_bp.route('/toggle/<int:task_id>', methods=['POST'])
 def toggle_status(task_id):
-    task = Task.query.get('task_id')
+    task = Task.query.get(task_id)
     if task:
-        if task.status == 'PENDING':
-            task.status = 'WORKING'
-        elif task.status == 'WORKING':
-            task.status = 'DONE'
+        if task.status == 'Pending':
+            task.status = 'Working'
+        elif task.status == 'Working':
+            task.status = 'Done'
         else:
-            task.status = "PENDING"
+            task.status = 'Pending'
         db.session.commit()
     return redirect(url_for('tasks.view_tasks'))
 
 @tasks_bp.route('/clear/<int:task_id>', methods = ['POST'])
 def clear_tasks(task_id):
-    Task.query.delete('task_id')
+    task = Task.query.get(task_id)
+    if task:
+        db.session.delete(task)
+        db.session.commit()
+        flash("Task removed", 'info')
+    return redirect(url_for('tasks.view_tasks'))
+
+
+@tasks_bp.route('/clear_all', methods=['POST'])
+def clear_all():
+    Task.query.delete()
     db.session.commit()
-    flash("task removed", 'info')
+    flash("All tasks cleared", 'info')
     return redirect(url_for('tasks.view_tasks'))
 
 @tasks_bp.route('/update/<int:task_id>', methods=['POST', 'GET'])
@@ -56,6 +66,3 @@ def update_task(task_id):
         flash("Task updated successfully", "success")
         return redirect(url_for('tasks.view_tasks'))
     return render_template('update_task.html', task=task)
-    
-
-# 5:37

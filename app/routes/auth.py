@@ -18,8 +18,10 @@ def login():
         if username == USER_CRENDENTIALS['username'] and password == USER_CRENDENTIALS['password']:
             session['user'] = username
             flash(f"Login Successfull! {username}", 'success')
+            return redirect(url_for('tasks.view_tasks'))
         else:
             flash("Invalid username or password", 'danger')
+            
 
     return render_template('login.html')
 
