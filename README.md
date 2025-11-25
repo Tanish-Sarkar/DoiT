@@ -201,17 +201,15 @@ The app uses a custom CSS stylesheet with:
 
 ---
 
-## 🚧 Future Enhancements
-
-- [ ] Due dates for tasks
-- [ ] Task categories/tags
-- [ ] Email verification on registration
-- [ ] Password reset functionality
-- [ ] Task sharing between users
-- [ ] Dark mode toggle
-- [ ] REST API endpoints
-- [ ] Automated testing suite
-
+## 🚧 ScreenShots of DoiT
+ <h2>Register page</h2>
+   <img src='https://github.com/Tanish-Sarkar/DoiT/blob/main/img/Screenshot%202025-11-25%20113326.png' alt='register'/>
+ <h2>Login page</h2>
+   <img src='https://github.com/Tanish-Sarkar/DoiT/blob/main/img/Screenshot%202025-11-25%20113350.png' alt='register'/>
+<h2>All task page</h2>
+   <img src='https://github.com/Tanish-Sarkar/DoiT/blob/main/img/Screenshot%202025-11-25%20113438.png' alt='register'/>
+<h2>Task updation page</h2>
+   <img src='https://github.com/Tanish-Sarkar/DoiT/blob/main/img/Screenshot%202025-11-25%20113510.png' alt='register'/>
 ---
 
 ## 💡 Tips & Tricks
