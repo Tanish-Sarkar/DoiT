@@ -1,5 +1,0 @@
-1. Make proper register -> login system rather than "static credentials" ✅
-
-2. add ad delete and updates button to ever task indivisually
-
-3. Add update functionality  
