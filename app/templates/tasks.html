@@ -29,8 +29,8 @@
                 <td>{{ loop.index }}</td>
                 <td>{{ task.title }}</td>
                 <td>
-                    <span class="badge {{task.status|lower}}">
-                        {{task.status}}
+                    <span class="badge badge-{{ task.status|lower }}">
+                        {{ task.status }}
                     </span>
                 </td>
                 <td>
