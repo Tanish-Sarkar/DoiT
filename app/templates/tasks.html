@@ -20,7 +20,7 @@
                 <th>#</th>
                 <th>Task</th>
                 <th>Status</th>
-                <th>Change</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -33,15 +33,23 @@
                         {{ task.status }}
                     </span>
                 </td>
-                <td>
-                    <form action="{{url_for('tasks.toggle_status', task_id=task.id)}}" method="POST">
-                        <button type="submit" class="btn-small">
-                            Next
+                <td class="task-actions">
+                    <form action="{{url_for('tasks.toggle_status', task_id=task.id)}}" method="POST" style="display:inline;">
+                        <button type="submit" class="btn-action btn-next" title="Next Status">
+                            ▶
                         </button>
-
+                    </form>
+                    <form action="{{url_for('tasks.update_task', task_id=task.id)}}" method="GET" style="display:inline;">
+                        <button type="submit" class="btn-action btn-edit" title="Edit Task">
+                            ✎
+                        </button>
+                    </form>
+                    <form action="{{url_for('tasks.delete_task', task_id=task.id)}}" method="POST" style="display:inline;" onsubmit="return confirm('Are you sure?');">
+                        <button type="submit" class="btn-action btn-delete" title="Delete Task">
+                            ✕
+                        </button>
                     </form>
                 </td>
-
             </tr>
             {% endfor %}
         </tbody>

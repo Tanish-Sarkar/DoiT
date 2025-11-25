@@ -39,13 +39,13 @@ def toggle_status(task_id):
         db.session.commit()
     return redirect(url_for('tasks.view_tasks'))
 
-@tasks_bp.route('/clear/<int:task_id>', methods = ['POST'])
-def clear_tasks(task_id):
+@tasks_bp.route('/delete/<int:task_id>', methods=['POST'])
+def delete_task(task_id):
     task = Task.query.get(task_id)
     if task:
         db.session.delete(task)
         db.session.commit()
-        flash("Task removed", 'info')
+        flash("Task deleted successfully", 'success')
     return redirect(url_for('tasks.view_tasks'))
 
 
